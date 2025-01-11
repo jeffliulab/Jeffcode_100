@@ -1,2 +1,7 @@
 # Jeffcode_100
-In AI era, logic will be more important than coding itself. I will collect 100 of leetcode-like to practice coding and will not do more than that. 100 is enough in this era.
+
+This collection project is just my personal practice notes of Neetcode and Leetcode, and other coding websites. 
+
+This collection project has no copyright of them. So if any topic posted here infringes my rights, please tell me and I will delete it.
+
+This collection is free to see and will never use for commercial usage.
