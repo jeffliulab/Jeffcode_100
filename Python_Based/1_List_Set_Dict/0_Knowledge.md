@@ -1,7 +1,5 @@
-```python
-#######################
 ## list (dynamic array)
-
+```python
 list_x = []
 
 list_x = [1, 2, 3, 4, 5]
@@ -18,10 +16,15 @@ if element in list_x: # O(n)
 for i, n in enumerate(list_x):
     print(f"index: {i}, value: {n}")
 
+if not list_x:
+    print("list has no element")
 
-#####################################
-## dict (hash table, key-value pairs)
+list_x.sort() # 数组排序（升序）
+list_x.sort(reverse=True) # 降序排序
+```
 
+## dict (Hash Map, key-value pairs)
+```python
 dict_x = {}
 
 dict_x = {"a": 1, "b": 2, "c": 3}
@@ -38,10 +41,12 @@ dict_x[element] = value # dict cannot use append or add
 
 dict_x[element] = dict_x.get(element, 0) + 1 # a very common usage
 
-for key in dict_x:
+# find key
+for key in dict_x: 
     print(f"key: {key}")
 
-for value in dict_x.values():
+# find value
+for value in dict_x.values(): 
     print(f"value: {value}")
 
 for key, value in dict_x.items():
@@ -50,10 +55,10 @@ for key, value in dict_x.items():
 list(dict_x.values) # 将dict的values组合成一个list（无顺序）
 
 list(dict_x.items()) # 将dict的key-value pairs组合成一个list
+```
 
-####################################
-## set (hash table, unique elements)
-
+## set (Hash Set - hash table based, unique elements)
+```python
 set_x = set()
 
 set_x = {1, 2, 3, 4, 5}
@@ -69,10 +74,10 @@ if element in set_x: # O(1)
 
 for item in set_x:
     print(f"element: {item}")
+```
 
-###########
 ## sorted()
-
+```python
 string = "eat"
 result = sorted(string)
 print(result)  # output: ['a', 'e', 't']
@@ -82,12 +87,10 @@ dict_nums = {'a': 3, 'b': 1, 'c': 2}
 items = list(dict_nums.items()) # 将字典转换为键值对列表
 sorted_items = sorted(items, key=lambda x: x[1], reverse=True) # 按值排序
 print("按值排序后的列表：", sorted_items)
+```
 
-
-
-#########
 ## .join
-
+```python
 words = ['hello', 'world', 'python']
 result = ' '.join(words)  # 用空格作为分隔符
 print(result)  # 输出: 'hello world python'
@@ -101,24 +104,24 @@ print(result)  # 输出: 'apple, banana, cherry'
 ''.join(f"some string with {s}" for s in strs)
 s = ['3', '#25', 'kk'] # .join的高级用法
 string = ''.join(f"#{len(s)}#{s.replace('#', '##')}" for s in strs)
+```
 
-#####################
 ## list comprehension 
 ## 列表推导式: 从一个可迭代对象中提取数据并生成新的列表
-
+```python
 [expression for variable in iterable if condition]
 
 list_freq = [(1, 3), (2, 2), (3, 1)]
 result = [item[0] for item in list_freq[:2]] # 提取出list_freq中的前两个元素
+```
 
-#########
 ## string
-
+```python
 list_s = string.split(',') #把string按照逗号分割并保存为list
+```
 
-#######
 ## CAST
-
+```python
 # 1. 转换为整数 (int)
 num = 3.5
 result = int(num)  # 结果: 3
@@ -155,8 +158,8 @@ hexadecimal = hex(num)  # 十六进制: '0xa'
 
 # 9. 隐式转换 (自动完成)
 result = 3 + 2.5  # 自动将整数 3 转为浮点数，结果: 5.5
+```
 
-####################################
 ## PREFIX PRODUCT and SUFFIX PRODUCT
 
 参见1-6
