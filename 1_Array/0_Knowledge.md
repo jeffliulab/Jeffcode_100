@@ -156,5 +156,9 @@ hexadecimal = hex(num)  # 十六进制: '0xa'
 # 9. 隐式转换 (自动完成)
 result = 3 + 2.5  # 自动将整数 3 转为浮点数，结果: 5.5
 
+####################################
+## PREFIX PRODUCT and SUFFIX PRODUCT
+
+参见1-6
 
 ```
