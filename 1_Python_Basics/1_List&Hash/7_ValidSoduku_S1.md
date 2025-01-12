@@ -1,4 +1,4 @@
-
+另一种解法见BitManipulation
 
 不考虑是否能解，只考虑是否在row, col, sub-matrix上存在重复的solution：
 ```python

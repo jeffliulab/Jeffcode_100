@@ -13,6 +13,7 @@ list_x[::-1] # 反转, return a copy, so needs assignment
 if element in list_x: # O(n)
     continue
 
+# Traverse with index and value
 for i, n in enumerate(list_x):
     print(f"index: {i}, value: {n}")
 
@@ -21,6 +22,10 @@ if not list_x:
 
 list_x.sort() # 数组排序（升序）
 list_x.sort(reverse=True) # 降序排序
+
+# add two lists
+list_x = [1, 2, 3] + [4]
+
 ```
 
 ## dict (Hash Map, key-value pairs)

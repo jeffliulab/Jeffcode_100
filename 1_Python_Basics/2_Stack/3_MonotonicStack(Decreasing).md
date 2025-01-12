@@ -1,4 +1,4 @@
-## The Problem
+## The Problem (Higher Temperature)
 
 Output how many days until the next higher temperature day:
 ```
@@ -36,15 +36,15 @@ class Solution:
 
 However, this method has high Ot and needs to be optimized.
 
-## Monotonic Stack (单调递减栈)
+## Monotonic Stack (单调栈)
 
 解决思路
-```
+```py
 重新看这个问题：你想知道每一天需要等多少天才能遇到比当天温度更高的温度。如果未来没有更高温度，就返回 0。
 
 例如： 输入 [73, 74, 75, 71, 69, 72, 76, 73]，我们希望输出： [1, 1, 4, 2, 1, 1, 0, 0]
 
-单调栈的核心思想：
+# 单调栈的核心思想：找到第一个比当前元素大/小的元素。
 
 栈中存放的是索引，栈内的温度对应索引保持 递减顺序。
 每次遍历新的温度时：
@@ -66,21 +66,30 @@ Solution Ot(n):
 ```python
 class Solution:
     def dailyTemperatures(self, temperatures: List[int]) -> List[int]:
-        ls = temperatures
-        output = [0 for i in range(len(ls))]
         stack = []
+        ls = temperatures
         if not ls:
-            return output
-        for i in range(len(ls)):
-            if not stack:
-                stack.append(i)
-            else:
-                # compare num and top temp
-                # if num is larger, pop the top, update output
-                while stack and ls[i] > ls[stack[-1]]:
-                    output[stack[-1]] = i - stack[-1]
-                    stack.pop()
-                stack.append(i)
+            return []
+        output = [0] * len(ls)
+        for i, n in enumerate(ls):
+            while(stack and n > ls[stack[-1]]):
+                output[stack[-1]] = i - stack[-1]
+                stack.pop()
+            stack.append(i)
         return output
+```
 
+空间换时间（不需要频繁访问temperatures）:
+```python
+class Solution:
+    def dailyTemperatures(self, temperatures: List[int]) -> List[int]:
+        res = [0] * len(temperatures)
+        stack = []  # pair: [temp, index]
+
+        for i, t in enumerate(temperatures):
+            while stack and t > stack[-1][0]:
+                stackT, stackInd = stack.pop()
+                res[stackInd] = i - stackInd
+            stack.append((t, i))
+        return res
 ```

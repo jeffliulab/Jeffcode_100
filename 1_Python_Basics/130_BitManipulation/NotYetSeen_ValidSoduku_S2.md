@@ -1,4 +1,4 @@
-这是1_Array/7_ValidSoduku的另外一种解：
+这是1_Array/7_ValidSoduku的另外一种解：（暂时还没看，先记录在这里）
 ```python
 class Solution:
     def isValidSudoku(self, board: List[List[str]]) -> bool:
