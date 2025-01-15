@@ -36,14 +36,21 @@ dict_x = {"a": 1, "b": 2, "c": 3}
 
 dict_x = dict(a=1, b=2, c=3)  # 注意键名不能有特殊字符
 
+
+
+
+
 dict_x = {x: x**2 for x in range(5)}  # {0: 0, 1: 1, 2: 4, 3: 9, 4: 16}
 
 dict_x[element] # return the value of element
 
-dict_x.get(element, 0) # Default is None, if only use dict_x.get(char)
+dict_x.get(element) # return the value or None if no element
+
+dict_x.get(element, 0) # set the default value to 0 if don't find element
 
 dict_x[element] = value # dict cannot use append or add
 
+# 增加元素的常见方法（注：dict中没有add的用法）
 dict_x[element] = dict_x.get(element, 0) + 1 # a very common usage
 
 # find key
@@ -60,6 +67,12 @@ for key, value in dict_x.items():
 list(dict_x.values) # 将dict的values组合成一个list（无顺序）
 
 list(dict_x.items()) # 将dict的key-value pairs组合成一个list
+
+# 比较两个dict
+dict1 == dict2 # 当且仅当两个dict的key和value都一样时才return True，在滑动窗口时会用到
+
+# 删除key
+del dict1['key']
 ```
 
 ## set (Hash Set - hash table based, unique elements)
@@ -67,6 +80,10 @@ list(dict_x.items()) # 将dict的key-value pairs组合成一个list
 set_x = set()
 
 set_x = {1, 2, 3, 4, 5}
+
+set_x.clear() # delete all elements but keep the set
+
+len(set_x)
 
 set_x = set([1, 2, 3, 4, 5])  # 将列表或其他可迭代对象转换为集合
 
