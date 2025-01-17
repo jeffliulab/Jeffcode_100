@@ -3,6 +3,8 @@
 * 堆栈（Stack）：使用 Python 的 list 可以实现堆栈的压入（append）和弹出（pop）。
 * 快速插入与删除：在大多数情况下，链表的 O(1) 插入优势无法弥补其 O(n) 遍历的劣势。
 
+注意，在Python中内置了OrderedDict，相当于dict+linkedlist。
+
 ## Singly LinkedList in Python
 
 ```py
@@ -248,4 +250,98 @@ if __name__ == "__main__":
     print("After Deleting Second Node:")
     DoublyLinkedListUtils.print_doubly_linked_list(head)
 
+```
+
+## OrderedDict in Python
+
+OrderedDict的最常见的使用场景就是LRU
+
+```py
+from collections import OrderedDict
+
+class LRUCache:
+    def __init__(self, capacity):
+        self.cache = OrderedDict()
+        self.capacity = capacity
+
+    def get(self, key):
+        if key in self.cache:
+            self.cache.move_to_end(key)  # 将键移动到末尾（标记为最近使用）
+            return self.cache[key]
+        return -1
+
+    def put(self, key, value):
+        if key in self.cache:
+            self.cache.move_to_end(key)  # 更新键的顺序
+        self.cache[key] = value
+        if len(self.cache) > self.capacity:
+            self.cache.popitem(last=False)  # 移除最久未使用的键
+
+# 测试 LRU 缓存
+lru = LRUCache(2)
+lru.put(1, 1)  # 缓存: {1=1}
+lru.put(2, 2)  # 缓存: {1=1, 2=2}
+print(lru.get(1))  # 输出 1, 缓存: {2=2, 1=1}
+lru.put(3, 3)      # 超出容量, 移除键 2, 缓存: {1=1, 3=3}
+print(lru.get(2))  # 输出 -1
+```
+
+## Nested Function
+
+```py
+class Solution:
+    def reverseKGroup(self, head: Optional[ListNode], k: int) -> Optional[ListNode]:
+        # 辅助函数：反转链表
+        def reverseLinkedList(head):
+            prev = None
+            cur = head
+            while cur:
+                cur_next = cur.next
+                cur.next = prev
+                prev = cur
+                cur = cur_next
+            return prev
+        
+        # 检查链表长度是否足够
+        def hasEnoughNodes(start, k):
+            count = 0
+            while start and count < k:
+                start = start.next
+                count += 1
+            return count == k
+
+        dummy = ListNode(0)
+        dummy.next = head
+        prev_group_end = dummy
+        cur = head
+
+        while cur:
+            # 检查是否有足够的节点反转
+            if not hasEnoughNodes(cur, k):
+                break
+
+            # 记录当前部分的开始和结束
+            group_start = cur
+            group_end = cur
+            for _ in range(k - 1):
+                group_end = group_end.next
+
+            # 记录下一个部分的开始
+            next_group_start = group_end.next
+
+            # 断开当前部分
+            group_end.next = None
+
+            # 反转当前部分
+            reversed_group = reverseLinkedList(group_start)
+
+            # 将反转的部分连接到前面和后面
+            prev_group_end.next = reversed_group
+            group_start.next = next_group_start
+
+            # 更新指针
+            prev_group_end = group_start
+            cur = next_group_start
+
+        return dummy.next
 ```

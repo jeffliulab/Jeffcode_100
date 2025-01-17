@@ -1,0 +1,10 @@
+超参数搜索（Hyperparameter Search）
+网格搜索（Grid Search）：
+穷举所有可能的参数组合。
+适用场景：小范围超参数优化。
+随机搜索（Random Search）：
+随机选择参数进行评估。
+适用场景：参数范围较大。
+贝叶斯优化（Bayesian Optimization）：
+使用概率模型预测最优参数。
+适用场景：深度学习超参数优化。
