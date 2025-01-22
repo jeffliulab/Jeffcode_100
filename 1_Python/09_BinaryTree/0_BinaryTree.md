@@ -51,7 +51,7 @@ print("Depth of Node E:", get_depth(root, root.left.right))  # 输出: Depth of 
 
 Traverse - DFS
 ```python
-# 前序遍历（Preorder Traversal）
+# Preorder Traversal 前序遍历
 # 顺序：根节点 → 左子树 → 右子树
 def preorder_traversal(node):
     if not node:
@@ -60,7 +60,7 @@ def preorder_traversal(node):
     preorder_traversal(node.left)  # 遍历左子树
     preorder_traversal(node.right)  # 遍历右子树
 
-# 中序遍历（Inorder Traversal）
+# Inorder Traversal 中序遍历
 # 顺序：左子树 → 根节点 → 右子树
 def inorder_traversal(node):
     if not node:
@@ -69,7 +69,7 @@ def inorder_traversal(node):
     print(node.value, end=" ")  # 访问当前节点
     inorder_traversal(node.right)  # 遍历右子树
 
-# 后序遍历（Postorder Traversal）
+# Postorder Traversal 后序遍历
 # 顺序：左子树 → 右子树 → 根节点
 def postorder_traversal(node):
     if not node:
