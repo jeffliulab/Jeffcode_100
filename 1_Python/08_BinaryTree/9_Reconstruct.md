@@ -27,8 +27,9 @@ class Solution:
 上述解法Efficiency较低的根本原因在于使用了 `.index()`，该函数每次循环时都增加了N的时间复杂度，导致整体时间复杂度较高。
 
 优化方向主要是通过HashMap或者Pointer的方式：
-
-```HashMap
+（暂时还没哟看这一部分，没看的部分不标注python）
+HashMap
+```
 # Definition for a binary tree node.
 # class TreeNode:
 #     def __init__(self, val=0, left=None, right=None):
