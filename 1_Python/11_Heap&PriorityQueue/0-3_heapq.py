@@ -1,5 +1,6 @@
 import heapq
 
+#############################################
 # Basic heapq operations (Default: Min-Heap)
 
 # Build a Min-Heap
@@ -34,6 +35,27 @@ print("3 largest elements:", largest)
 smallest = heapq.nsmallest(3, nums)  # Get the 3 smallest elements
 print("3 smallest elements:", smallest)
 
+#######################################
+# Merge multiple heaps
+
+# 假设有三个已 heapify 的堆
+heap1 = [1, 3, 5]
+heap2 = [2, 4, 6]
+heap3 = [0, 7, 8]
+
+# 使用 heapq.merge 合并多个堆，return一个有序迭代器（iterator）
+merged_iter = heapq.merge(heap1, heap2, heap3)
+
+# 将结果转为列表并重新 heapify
+new_heap = list(merged_iter)
+heapq.heapify(new_heap)
+
+# 打印新的堆
+print(new_heap)  # 输出: [0, 1, 5, 3, 4, 6, 8, 7, 2]
+
+
+
+#######################################
 # Max-Heap implementation using negation
 
 # Create a Max-Heap by negating elements

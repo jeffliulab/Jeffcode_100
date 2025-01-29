@@ -75,29 +75,6 @@ dict1 == dict2 # 当且仅当两个dict的key和value都一样时才return True�
 del dict1['key']
 ```
 
-## set (Hash Set - hash table based, unique elements)
-```python
-set_x = set()
-
-set_x = {1, 2, 3, 4, 5}
-
-set_x.clear() # delete all elements but keep the set
-
-len(set_x)
-
-set_x = set([1, 2, 3, 4, 5])  # 将列表或其他可迭代对象转换为集合
-
-set_x = {x**2 for x in range(5)}  # {0, 1, 4, 9, 16}
-
-set_x.add(element)
-
-if element in set_x: # O(1)
-    continue
-
-for item in set_x:
-    print(f"element: {item}")
-```
-
 ## sorted()
 ```python
 string = "eat"

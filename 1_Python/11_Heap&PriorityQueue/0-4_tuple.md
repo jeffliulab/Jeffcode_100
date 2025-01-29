@@ -11,6 +11,10 @@ t = (1, "hello", [3, 4]) # Can assign mixed data types
 t = ()                   # Empty tuple
 t = (5,)                 # Single-element tuple, note the trailing comma
 
+# unpack tuple的一般方法：
+t = (1, x, y)
+a, b, c = t
+
 # 2. Accessing Tuple Elements
 # 元组是有序的，可以通过索引访问元素
 t = (10, 20, 30, 40)
